@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>testing </title>
+	<style type="text/css">
+	*{
+	margin: 0;
+	padding: 0;
+}
+
+#topmenu{
+	width: 100%;
+	height: 40px;
+	background-color: skyblue;
+	clear: both;
+}
+#topmenu ul{
+list-style-type: none;
+background-color: green;
+
+
+}
+#topmenu ul li{
+float: left;
+width: 120px;
+text-align: center;
+line-height:40px; 
+height:40px;
+border-right: 1px solid white;
+color: yellow;
+font-family: IDROID;
+padding: 0 3%;
+
+}
+#topmenu ul li a {
+text-decoration: none;
+color: yellow;
+display: block;
+
+
+}
+#topmenu ul li{
+
+display: block;
+
+
+}
+#topmenu ul li:hover ul{
+   display: block;
+   background: blue;
+}
+#topmenu ul li:hover ul li{
+   display: block;
+   background: blue;
+
+}
+#topmenu ul li.selected,ul li:hover {
+     color: skyblue;
+     background-color: yellow;
+	}
+	#topmenu ul li ul li{
+		display: none;
+		float: left;
+
+
+
+	}
+	#topmenu ul li:hover ul{
+		background: skyblue;
+		color: yellow;
+	}
+	#topmenu ul li:hover ul li{
+		display: block;
+		float: left;
+		opacity: 0.9;
+		
+	}
+	#topmenu ul li:hover a{
+		color: skyblue;
+		
+	}
+	#topmenu ul li.selected a{
+		color: skyblue;
+		
+	}
+	 #topmenu ul li ul li:hover li{
+		color: skyblue;
+     background-color: yellow;
+		
+	}
+    #topmenu ul li ul li:hover a{
+		color: skyblue;
+     background-color: yellow;
+		
+	}
+#sidemenu{
+	width: 20%;
+	height:600px;
+	background-color: skyblue;
+	float: left;
+}
+
+	</style>
+</head>
+<body>
+<div class="wrapper">
+	<div id="topmenu">
+			<ul>
+				<li class="selected"><a href="html template.html" >Home</a></li>
+				<li><a href="about.html">About Us</a>
+
+				</li>
+				<li><a href="#">Products</a>
+                    <ul id="drpdn" class="drpdn">
+	                   	<li><a href="old.html">Electronics</a></li>
+	                   	<li><a href="new.html">Others</a></li>
+                   </ul>
+				</li>
+				<li><a href="contact.html">Contacts</a></li>
+				<li><a href="contact.html">User Login</a>
+                    <ul id="drpdn" class="drpdn">
+	                   	<li><a href="old.html">My Cart</a></li>
+	                   	<li><a href="new.html">Change Password</a></li>
+	                   	<li><a href="new.html">Logout</a></li>
+                   </ul>
+				</li>
+			</ul>
+		</div>
+ 
+</div>
+</body>
+</html>

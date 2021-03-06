@@ -1,0 +1,93 @@
+#top{
+background: linear-gradient(to top, rgba(255,0,0,0.1), rgba(120,0,255,0.5));	
+}
+#logo{
+	height: 100px;
+   width: 10%;
+   float: left;
+margin-bottom: 3%;
+
+}
+#title{
+	height: 100px;
+	width: 90%;
+	float: right;
+	 
+}
+#title p{
+	font-family: ANDROID ROBOT;
+	font-size: 4.3em;
+	color:#3399ff;
+	line-height: 100px;
+	float:left; 
+
+
+}
+#banner{
+	height: auto;
+	width: 65%;
+	float: left;
+
+}
+#banner p{
+	font-family: Copperplate Gothic Bold;
+}
+#rightmenu{
+	height: auto;
+    width: 35%;
+    float: left;
+    font-family: Copperplate Gothic Bold;
+}
+#rightmenu a{
+	font-family: Copperplate Gothic Bold;
+}
+#login{
+	padding: 0 0 0 3%;
+}
+#contents{
+	clear: both;
+	height: auto;
+	width: 65%;
+}
+#contents a{
+	color:black;
+	font-family: Copperplate Gothic Bold;
+	font-size: 1.2em;
+}
+#contents a:hover {
+	color:black;
+	text-decoration: none;
+}
+#footer{
+	clear: both;
+	height: 50px;
+	width: 100%;
+}
+#branding {
+color: white
+}
+#branding div{
+font-size:1em;
+padding: 3%;
+}
+.uname{
+	color: #00f;
+	font-weight: bold;
+	font-size: 14px;
+	font-family: Verdana, Geneva, sans-serif;
+}
+.msg{
+	color: #390;
+	font-size: 15px;
+	font-family: Georgia, "Times New Roman",Times, serif;
+}
+#chatbtn{
+     position: fixed;
+     bottom: 0px;
+     right: 8%;
+}
+#toping{
+     position: fixed;
+     top: 0px;
+     
+}
