@@ -29,8 +29,7 @@ return [
     | mailers below. You are free to add additional mailers as required.
     |
     | Supported: "smtp", "sendmail", "mailgun", "ses",
-    |            "postmark", "log", "array"
-    |
+    |            "postmark", "log", "array"    |
     */
 
     'mailers' => [
@@ -84,8 +83,8 @@ return [
     */
 
     'from' => [
-        'address' => env('MAIL_FROM_ADDRESS', 'aimeanathole@example.com'),
-        'name' => env('MAIL_FROM_NAME', 'Example'),
+        'address' => env('MAIL_FROM_ADDRESS', 'niyoeanpaul1996@gmail.com'),
+        'name' => env('MAIL_FROM_NAME', 'niyoeanpaul199'),
     ],
 
     /*

@@ -23,6 +23,8 @@ class CreateUsersTable extends Migration
             $table->string('referee_id');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('has_paid_package')->default('no')->comment('do user has paid for any package');
+            $table->string('has_free_package')->default('no')->comment('do user allowed a free package');
             $table->string('utype')->default('USR')->comment('ADM for admin and USR for user or customer');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
