@@ -11,6 +11,45 @@
           <div class="row mb-2">
             <div class="col-sm-6">
               <h1 class="m-0 text-dark">Dashboard</h1>
+
+
+              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Open Form
+            </button>
+
+            <!-- Modal -->
+            <div wire:ignore.self class="modal fade" id="" tabindex="-1" role="dialog" data-backdrop="static" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                 <span aria-hidden="true close-btn">×</span>
+                            </button>
+                        </div>
+                       <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput1">Name</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name" wire:model="name">
+                                    @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleFormControlInput2">Email address</label>
+                                    <input type="email" class="form-control" id="exampleFormControlInput2" wire:model="email" placeholder="Enter Email">
+                                    @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
+                            <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Save changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -587,120 +626,341 @@
 
     </div>
 
-            {{-- <div id="myModal" class="modal">
+
+  <style>
+
+
+    /* The Modal (background) */
+    .card_payment{
+      width:80px;
+      height:40px
+    }
+    .PayImage{
+      width:100%;
+      height:40px;
+    }
+    .modal {
+      display:block;
+      position: fixed;
+      z-index: 999999;
+      padding-top: 3%;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0,0,0);
+      background-color: rgba(0,0,0,0.4);
+    }
+
+    /* Modal Content */
+    .modal-content {
+      background-color: #fefefe;
+      margin: auto;
+      margin-left:18%;
+      border: 1px solid #888;
+      width: 78%;
+    }
+    </style>
+
+            <div id="exampleModal" class="modal "  data-backdrop="static" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
                 <div class="modal-content">
-                   <button type="button" class="btn btn-outline-info"><a href="/affiliate/register">Back</a></button>
-                    <div class="d-flex justify-content-between">
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
-                            </div>
-                        </div>
+                    <div class="flex justify-content-between mb-4">
+                        <a href="/"><button type="button" class="btn btn-outline-info btn-primary"> Back</button></a>
+                        <a class="float-right" href="#"   onclick="event.preventDefault(); document.getElementById('logout-form').submit()" ><button type="button" class="btn btn-outline-info btn-danger "> Logout</button></a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"> @csrf</form>
                     </div>
+                   <div class="row">
+                    <div class="col-sm-3">
+                      <div class="card-body" style="margin:0;padding:0;">
+                          <div class="bg-dark" >
+                              <center class="bg-danger"><h3>Explorer</h3></center>
+                                <center><h4>$200</h4></center>
+                              <!-- /.info-box-content -->
+                              <ul>
+                                  <li>Education package from mygithub.com Value €40</li>
+                                  <li>Muhahe Rewards 50 pc</li>
+                                  <li>Streamline up to level 4</li>
+                              </ul>
+                               <div class="bg-primary container-fluid">
+                                      <div class="col-md-12">
+                                          <center>
+                                          <button type="button" class="btn btn-outline-light" style="margin-bottom:5px;margin-top:5px">Select</button>
+                                          </center>
+                                      </div>
+                                </div>
+
+
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3" >
+                    <div class="card-body" style="margin:0;padding:0;">
+                          <div class="bg-dark" >
+                          <center class="bg-danger"><h3>Explorer</h3></center>
+                                <center><h4>$400</h4></center>
+                              <!-- /.info-box-content -->
+                              <ul>
+                                  <li>Education package from mygithub.com Value €40</li>
+                                  <li>Muhahe Rewards 50 pc</li>
+                                  <li>Streamline up to level 4</li>
+                              </ul>
+                               <div class="bg-primary container-fluid">
+                                      <div class="col-md-12">
+                                          <center>
+                                          <button type="button" class="btn btn-outline-light" style="margin-bottom:5px;margin-top:5px">Select</button>
+                                          </center>
+                                      </div>
+                                </div>
+
+
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3" >
+                      <div class="card-body" style="margin:0;padding:0">
+                      <div class="card-body" style="margin:0;padding:0;">
+                          <div class="bg-dark" >
+                          <center class="bg-danger"><h3>Explorer</h3></center>
+                                <center><h4>$600</h4></center>
+                              <!-- /.info-box-content -->
+                              <ul>
+                                  <li>Education package from mygithub.com Value €40</li>
+                                  <li>Muhahe Rewards 50 pc</li>
+                                  <li>Streamline up to level 4</li>
+                              </ul>
+                               <div class="bg-primary container-fluid">
+                                      <div class="col-md-12">
+                                          <center>
+                                          <button type="button" class="btn btn-outline-light" style="margin-bottom:5px;margin-top:5px">Select</button>
+                                          </center>
+                                      </div>
+                                </div>
+
+
+                          </div>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3" >
+                    <div class="card-body" style="margin:0;padding:0;">
+                          <div class="bg-dark" >
+                          <center class="bg-danger"><h3>Explorer</h3></center>
+                                <center><h4>$1200</h4></center>
+                              <!-- /.info-box-content -->
+                              <ul>
+                                  <li>Education package from mygithub.com Value €40</li>
+                                  <li>Muhahe Rewards 50 pc</li>
+                                  <li>Streamline up to level 4</li>
+                              </ul>
+                               <div class="bg-primary container-fluid">
+                                      <div class="col-md-12">
+                                          <center>
+                                          <button type="button" class="btn btn-outline-light" style="margin-bottom:5px;margin-top:5px">Select</button>
+                                          </center>
+                                      </div>
+                                </div>
+
+
+                          </div>
+                      </div>
+                    </div>
+
+                 </div>
+                 <div class="row" style="margin-top:10px">
+                    <div class="col-sm-3">
+                    <div class="card-body" style="margin:0;padding:0;">
+                          <div class="bg-dark" >
+                          <center class="bg-danger"><h3>Explorer</h3></center>
+                                <center><h4>$2000</h4></center>
+                              <!-- /.info-box-content -->
+                              <ul>
+                                  <li>Education package from mygithub.com Value €40</li>
+                                  <li>Muhahe Rewards 50 pc</li>
+                                  <li>Streamline up to level 4</li>
+                              </ul>
+                               <div class="bg-primary container-fluid">
+                                      <div class="col-md-12">
+                                          <center>
+                                          <button type="button" class="btn btn-outline-light" style="margin-bottom:5px;margin-top:5px">Select</button>
+                                          </center>
+                                      </div>
+                                </div>
+
+
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3" >
+                    <div class="card-body" style="margin:0;padding:0;">
+                          <div class="bg-dark" >
+                          <center class="bg-danger"><h3>Explorer</h3></center>
+                                <center><h4>$3000</h4></center>
+                              <!-- /.info-box-content -->
+                              <ul>
+                                  <li>Education package from mygithub.com Value €40</li>
+                                  <li>Muhahe Rewards 50 pc</li>
+                                  <li>Streamline up to level 4</li>
+                              </ul>
+                               <div class="bg-primary container-fluid">
+                                      <div class="col-md-12">
+                                          <center>
+                                          <button type="button" class="btn btn-outline-light" style="margin-bottom:5px;margin-top:5px">Select</button>
+                                          </center>
+                                      </div>
+                                </div>
+
+
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3" >
+                    <div class="card-body" style="margin:0;padding:0;">
+                          <div class="bg-dark" >
+                          <center class="bg-danger"><h3>Explorer</h3></center>
+                                <center><h4>$5000</h4></center>
+                              <!-- /.info-box-content -->
+                              <ul>
+                                  <li>Education package from mygithub.com Value €40</li>
+                                  <li>Muhahe Rewards 50 pc</li>
+                                  <li>Streamline up to level 4</li>
+                              </ul>
+                               <div class="bg-primary container-fluid">
+                                      <div class="col-md-12">
+                                          <center>
+                                          <button type="button" class="btn btn-outline-light" style="margin-bottom:5px;margin-top:5px">Select</button>
+                                          </center>
+                                      </div>
+                                </div>
+
+
+                          </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-3" >
+                    <div class="card-body" style="margin:0;padding:0;">
+                          <div class="bg-dark" >
+                          <center class="bg-danger"><h3>Explorer</h3></center>
+                                <center><h4>$10000</h4></center>
+                              <!-- /.info-box-content -->
+                              <ul>
+                                  <li>Education package from mygithub.com Value €40</li>
+                                  <li>Muhahe Rewards 50 pc</li>
+                                  <li>Streamline up to level 4</li>
+                              </ul>
+                               <div class="bg-primary container-fluid">
+                                      <div class="col-md-12">
+                                          <center>
+                                          <button type="button" class="btn btn-outline-light" style="margin-bottom:5px;margin-top:5px">Select</button>
+                                          </center>
+                                      </div>
+                                </div>
+                          </div>
+                      </div>
+                    </div>
+
+                 </div>
+
+                 <!-- payment method div -->
+                 <div class="bg-light container-fluid">
+                    <div class="container my-4">
+                    <center><h4>Choose Paymnent Method Here</h4></center>
+                       <div class="row my-4">
+                       <div class="col-sm-2"></div>
+                       <div class="col-sm-8">
+                       <div class="d-flex justify-content-between">
+                              <div class="card_payment">
+                              <a data-toggle="tab" href="#momo"> <img src="../image/momo.jpg" class="PayImage" id="payImage" alt="..."></a>
+                              </div>
+                              <div class="card_payment">
+                              <a data-toggle="tab" href="#paypal"><img src="../image/paypal.jpg" class="PayImage" id="payImage" alt="..."></a>
+                              </div>
+                              <div class="card_payment">
+                                <a data-toggle="tab" href="#stripe"> <img src="../image/master.png" class="PayImage" id="payImage" alt="..."></a>
+                              </div>
+                              <div class="card_payment">
+                                <a data-toggle="tab" href="#stripe"> <img src="../image/visa.png" class="PayImage" id="payImage" alt="..."></a>
+                              </div>
+                              <div class="card_payment">
+                                <a data-toggle="tab" href="#stripe"> <img src="../image/skril.jpeg" class="PayImage" id="payImage" alt="..."></a>
+                              </div>
+                              <div class="card_payment">
+                                <a data-toggle="tab" href="#stripe"> <img src="../image/stripe.jpg" class="PayImage" id="payImage" alt="..."></a>
+                              </div>
+                              <div class="card_payment">
+                                   <a data-toggle="tab" href="#offline"><img src="../image/offlinepay.jpg" class="PayImage" id="payImage" alt="..."></a>
+                               </div>
+                          </div>
+
+                          <!-- dynamic tabs for payment -->
+                          <div class="tab-content my-4">
+                              <div id="momo" class="tab-pane fade">
+                                  <div class="container">
+                                      Dial *182*8*1*043159#
+                                  </div>
+                              </div>
+                              <div id="paypal" class="tab-pane fade in active">
+                                  <h3>PayPal Payment</h3>
+                                  <p>Some content.</p>
+                              </div>
+                              <div id="stripe" class="tab-pane fade">
+                                  <h3>Stripe payment method</h3>
+                                  <div class="container">
+                                      <div class="row">
+                                          <div class="col-sm-6">
+                                              <div >
+                                                  <input id="PhoneNumber" type="text" placeholder="Card Number" class="inputformdonor" value="">
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-6">
+                                              <div >
+                                                  <input id="PhoneNumber" type="text" placeholder="CVV" class="inputformdonor" value="">
+
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="row">
+                                          <div class="col-sm-6">
+                                              <div >
+                                                  <input id="PhoneNumber" type="text" placeholder="Month" class="inputformdonor">
+                                              </div>
+                                          </div>
+                                          <div class="col-sm-6">
+                                              <div >
+                                                  <input id="PhoneNumber" type="text" placeholder="Year" class="inputformdonor">
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div id="offline" class="tab-pane fade">
+                                  <h3>Offline Payment Method</h3>
+                                  <p>Some content in menu 2.</p>
+                              </div>
+                          </div>
+                         </div>
+                       </div>
+                       <div class="col-sm-2"></div>
+                       </div>
+                    </div>
+                  </div>
                 </div>
 
-            </div> --}}
-
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                Open Form
-            </button>
-
-            <!-- Modal -->
-            <div wire:ignore.self class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                 <span aria-hidden="true close-btn">×</span>
-                            </button>
-                        </div>
-                       <div class="modal-body">
-                            <form>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput1">Name</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Enter Name" wire:model="name">
-                                    @error('name') <span class="text-danger error">{{ $message }}</span>@enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleFormControlInput2">Email address</label>
-                                    <input type="email" class="form-control" id="exampleFormControlInput2" wire:model="email" placeholder="Enter Email">
-                                    @error('email') <span class="text-danger error">{{ $message }}</span>@enderror
-                                </div>
-                            </form>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary close-btn" data-dismiss="modal">Close</button>
-                            <button type="button" wire:click.prevent="store()" class="btn btn-primary close-modal">Save changes</button>
-                        </div>
-                    </div>
-                </div>
             </div>
-
-
 
 
    <script>
 
     document.addEventListener('livewire:load', function () {
 
-        var modal = document.getElementById("myModal")
-        var btn = document.getElementById("myBtn");
-        var span = document.getElementsByClassName("close")[0];
-        btn.onclick = function() {
-        modal.style.display = "block";
-        }
+        // $('#exampleModal').modal('show');
 
-        span.onclick = function() {
-        modal.style.display = "none";
-        }
-        window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = "block";
-        }
-        }
         })
 
 
+
+
     </script>
+
 

@@ -26,7 +26,11 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
   <link rel="stylesheet" href="{{asset('assets/a/css/style.css')}}">
 
+
    @livewireStyles
+
+
+
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -568,7 +572,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <hr id="hrs">
 
     <p><i class="fas fa-logout mr-2"></i> <a href="">Need Help</a></p>
-    <p> <a href="">Log Out</a></p>
+    <p> <a href="#"  onclick="event.preventDefault(); document.getElementById('logout-form').submit() >Log Out</a></p>
+
      </div>
 </center>
 </aside>

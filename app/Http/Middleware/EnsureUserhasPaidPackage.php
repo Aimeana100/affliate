@@ -16,14 +16,14 @@ class EnsureUserhasPaidPackage
      */
     public function handle(Request $request, Closure $next)
     {
-        if( Auth::user()->utype === 'USR' && Auth::user()->has_paid_package === 'yes' && Auth::user()->has_free_package === 'yes')
+        if( $request->user()->utype === 'USR' && $request->user()->has_paid_package === 'yes' && $request->user()->has_free_package === 'yes')
         {
 
             return $next($request);
         }
         else {
 
-            return redirect()->route('package');
+            return redirect()->route('user.package');
         }
 
     }

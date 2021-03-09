@@ -26,7 +26,7 @@ Route::get('/about', FrontComponent::class)->name('front.about');
 Route::get('/contact', FrontComponent::class)->name('front.contact');
 
 // // route for User or customer
-Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+Route::middleware(['auth:sanctum', 'verified', 'user-package'])->group(function(){
     Route::get('/user/dashboard', UserDashboardComponent::class)->name('user.dashboard');
     Route::get('/user/dashboard/payclick', UserDashboardComponent::class)->name('user.dashboard.payclick');
     Route::get('/user/dashboard/balance', UserDashboardComponent::class)->name('user.dashboard.balance');
@@ -40,7 +40,7 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('user/dashboard/refer_earn', UserDashboardComponent::class)->name('user.dashboard.refer_earn');
     Route::get('user/dashboard/account', UserDashboardComponent::class)->name('user.dashboard.account');
     Route::get('user/dashboard/faq', UserDashboardComponent::class)->name('user.dashboard.faq');
-    Route::get('/user/package',UserPackageComponent::class)->name('user.package');
+    Route::get('/user/package',UserPackageComponent::class)->name('user.package')->withoutMiddleware('user-package') ;
 
 });
 
